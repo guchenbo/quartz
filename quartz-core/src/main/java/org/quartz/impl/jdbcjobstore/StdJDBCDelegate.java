@@ -3026,7 +3026,9 @@ public class StdJDBCDelegate implements DriverDelegate, StdJDBCConstants {
      * @return the query, with proper table prefix substituted
      */
     protected final String rtp(String query) {
-        return Util.rtp(query, tablePrefix, getSchedulerNameLiteral());
+        String sql = Util.rtp(query, tablePrefix, getSchedulerNameLiteral());
+        logger.debug("sql: {}", sql);
+        return sql;
     }
 
     private String schedNameLiteral = null;
